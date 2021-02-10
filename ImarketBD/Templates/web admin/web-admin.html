@@ -1,0 +1,346 @@
+{% load static %}
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en" class="app">
+
+<head>
+    <meta charset="utf-8" />
+    <title>iMarketBD | Web Application</title>
+    <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="{% static 'document/App unminify.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'js/calendar/bootstrap_calendar.css' %}" type="text/css" />
+</head>
+
+<body class="">
+    <section class="vbox">
+        <header class="bg-white header header-md navbar navbar-fixed-top-xs box-shadow">
+            <div class="navbar-header aside-md dk">
+                <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html"> <i class="fa fa-bars"></i> </a>
+                <a href="{% url 'web-admin' %}" class="navbar-brand"> <img src="{% static 'images/imagelogo.png' %}" class="m-r-sm" alt="IMarketBD"> <span class="hidden-nav-xs"></span> </a>
+            </div>
+            <ul class="nav navbar-nav hidden-xs">
+                <li class="dropdown">
+                    <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive"><i class="fa fa-bars"></i></a>
+                    <section class="dropdown-menu aside-lg bg-white on animated fadeInLeft">
+                        <div class="row m-l-none m-r-none m-t m-b text-center">
+                        </div>
+                    </section>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left input-s-xl m-t m-l-n-xs hidden-xs" role="search">
+                <div class="form-group">
+                    <div class="input-group"> <span class="input-group-btn"> <button type="submit" class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-search"></i></button> </span>
+                    <input type="text" class="form-control input-sm no-border" placeholder="Search products..."> 
+                    </div>
+                </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="thumb-sm avatar pull-left"> <img src="{% static 'images/a3.png' %}" alt="..."></span> {{user.username}} <b class="caret"> </b> </a>
+                    <ul class="dropdown-menu animated fadeInRight">
+                        <li> <a href="#">Profile</a> </li>
+                        <li> <span class="arrow top"></span> <a href="#">Settings</a> </li>
+                        <li> <a href="#">Help</a> </li>
+                        <li class="divider"></li>
+                        <li> <a href="{% url 'logout' %}" >Logout</a> </li>
+                    </ul>
+                    
+                </li>
+            </ul>
+        </header>
+        <section>
+            <section class="hbox stretch">
+                <!-- .aside -->
+                <aside class="bg-black aside-md hidden-print hidden-xs" id="nav">
+                    <section class="vbox">
+                        <section class="w-f scrollable">
+                            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2"> 
+                                <!-- nav -->
+                                <nav class="nav-primary hidden-xs">
+                                    <ul class="nav nav-main" data-ride="collapse">
+                                        <li class="">
+                                            <a href="#" class="auto"> <i class="fa fa-laptop"> </i> <span class="font-bold">Dashboard</span> </a>
+                                        </li>
+                                        <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Addition</div>
+                                        <li>
+                                            <a href="{% url 'applicant_user' %}" class="auto"> <span class="pull-right text-muted">   </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-male"> </i> <span class="font-bold">Applications</span> </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'register_user' %}" class="auto"> <span class="pull-right text-muted">   </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-male"> </i> <span class="font-bold">Register User</span> </a>
+                                        </li>
+                                        <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Departments</div>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">   </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-male"> </i> <span class="font-bold">Web Admins</span> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">  </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-male"> </i> <span class="font-bold">Ministry of Commerce</span> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">  </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-male"> </i> <span class="font-bold">Ministry of Agriculture</span> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">  </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-male"> </i> <span class="font-bold">Port Authority</span> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">  </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-male"> </i> <span class="font-bold">Bangladesh Bank</span> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">  </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-male"> </i> <span class="font-bold">Market Minitor</span> </a>
+                                        </li>
+                                        <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Extra</div>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">  </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-cog"> </i> <span class="font-bold">Settings</span> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">  </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-pencil"> </i> <span class="font-bold">Help</span> </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'logout' %}" class="auto"> <span class="pull-right text-muted">  </span> <b class="badge bg-danger pull-right"></b> <i class="i i-logout"> </i> <span class="font-bold">Logout</span> </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- / nav -->
+                            </div>
+                        </section>
+                        <footer class="footer hidden-xs no-padder text-center-nav-xs">
+                            <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs"> <i class="i i-circleleft text"></i> <i class="i i-circleright text-active"></i> </a>
+                        </footer>
+                    </section>
+                </aside>
+                <!-- /.aside -->
+                <section id="content">
+                    <section class="hbox stretch">
+                        <section>
+                            <section class="vbox">
+                                <section class="scrollable padder">
+                                    <section class="row m-b-md">
+                                        <div class="col-sm-6">
+                                            <h3 class="m-b-xs text-black">Dashboard</h3> <small>Welcome back, John Smith</small> </div>
+                                    </section>
+                                    <div class="row dk m-b">
+                                        <div class="col-md-12 dker">
+                                            <section>
+                                                <div class="row m-b">
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <section class="panel b-a">
+                                                            <div class="panel-body">
+                                                                <div id="b-c" class="text-center" style="background-color: rgb(99, 235, 194); color: white;">
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="icon text text-center">
+                                                                                <h1><i class="fa fa-users" ></i></h1>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="text">
+                                                                                <h2>10</h2>
+                                                                                <span>Add New</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-12">
+                                                                            <div class="panel-heading  lt" style="background-color: rgb(99, 235, 194); color:white;"><a href="#" class="h4 text-lt m-t-sm m-b-sm block font-bold text-center">Add New User</a></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <section class="panel b-a">
+                                                            <div class="panel-body">
+                                                                <div id="b-c" class="text-center" style="background-color: rgb(99, 197, 235); color: white;">
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="icon text text-center">
+                                                                                <h1><i class="fa fa-file" ></i></h1>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="text">
+                                                                                <h2>11</h2>
+                                                                                <span>Application pending</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-12">
+                                                                            <div class="panel-heading  lt" style="background-color:rgb(99, 197, 235); color:white;"><a href="{% url 'applicant_user' %}" class="h4 text-lt m-t-sm m-b-sm block font-bold text-center">New Applications</a></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <section class="panel b-a">
+                                                            <div class="panel-body">
+                                                                <div id="b-c" class="text-center" style="background-color: rgb(10, 130, 243); color: white;">
+                                                                    <div class="row clearfix">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="icon text text-center">
+                                                                                <h1><i class="fa fa-users" ></i></h1>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="text">
+                                                                                <h2>102</h2>
+                                                                                <span>Total Users</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-12">
+                                                                            <div class="panel-heading  lt" style="background-color:rgb(10, 130, 243); color:white;"><a href="{% url 'register_user' %}" class="h4 text-lt m-t-sm m-b-sm block font-bold text-center">Register User</a></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-10">
+                                                        <section class="panel b-a">
+                                                            <div class="panel-body">
+                                                                <div class="panel-heading b-b"><span class="badge bg-warning pull-right">1</span> <a href="#" class="font-bold">Applications</a></div>
+                                                                <div class= "main-section" style=" width:1400px; height: 600px; ">
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <table class="table table-dark">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                    <th scope="col">Email</th>
+                                                                                    <th scope="col">Organization</th>
+                                                                                    <th scope="col">First Name</th>
+                                                                                    <th scope="col">Last Name</th>
+                                                                                    <th scope="col">National ID</th>
+                                                                                    <th scope="col">Mobile Number</th>
+                                                                                    <th scope="col">Action</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                {% for register in registerUser %}
+                                                                                {% if register.is_superuser%}
+                
+                                                                                {% elif register.is_allow or register.is_webadmin %}
+                
+                                                                                {% else %}
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                    <td scope="row">{{register.email}}</td>
+                                                                                    <td>{{register.organizations}}</td>
+                                                                                    <td>{{register.first_name}}</td>
+                                                                                    <td>{{register.last_name}}</td>
+                                                                                    <td>{{register.national_id_number}}</td>
+                                                                                    <td>{{register.phone_number}}</td>
+                                                                                    <!-- <td><img class="img-thumbnail" style="width:50px; height:50px; border-radius: 50%;" src="{% static 'images/a1.png' %}" alt=""></td>-->
+                                                                                    <td>
+                                                                                        <a class="btn btn-sm btn-primary view_data" href="{% url 'applicant_user' %}">Details</a>
+                                                                                        <a class="btn btn-sm btn-info allow_data">Allow</a>
+                                                                                    </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                                {% endif %}
+                                                                                {% endfor %}
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                    <!--<div class="col-md-4">
+                                                        <section class="panel b-a" style=" width:525px; height: 650px;">
+                                                            <div class="panel-heading b-b"><span class="badge bg-info pull-right">5</span> <a href="#" class="font-bold">Messages</a></div>
+                                                            <ul class="list-group list-group-lg no-bg auto">
+                                                                <a href="#" class="list-group-item clearfix">
+                                                                    <span class="pull-left thumb-sm avatar m-r"> <img src="{% static 'images/a3.png' %}" alt="..." /> <i class="on b-white bottom"></i> </span>
+                                                                    <span class="clear"> <span>Chris Fox</span> <small class="text-muted clear text-ellipsis">What's up, buddy</small> </span>
+                                                                </a>
+                                                                <a href="#" class="list-group-item clearfix">
+                                                                    <span class="pull-left thumb-sm avatar m-r"> <img src="{% static 'images/a5.png' %}" alt="..." /> <i class="on b-white bottom"></i> </span>
+                                                                    <span class="clear"> <span>Amanda Conlan</span> <small class="text-muted clear text-ellipsis">Come online and we need talk about the plans that we have discussed</small> </span>
+                                                                </a>
+                                                                <a href="#" class="list-group-item clearfix">
+                                                                    <span class="pull-left thumb-sm avatar m-r"> <img src="{% static 'images/a6.png' %}" alt="..." /> <i class="busy b-white bottom"></i> </span>
+                                                                    <span class="clear"> <span>Dan Doorack</span> <small class="text-muted clear text-ellipsis">Hey, Some good news</small> </span>
+                                                                </a>
+                                                                <a href="#" class="list-group-item clearfix">
+                                                                    <span class="pull-left thumb-sm avatar m-r"> <img src="{% static 'images/a7.png' %}" alt="..." /> <i class="away b-white bottom"></i> </span>
+                                                                    <span class="clear"> <span>Lauren Taylor</span> <small class="text-muted clear text-ellipsis">Nice to talk with you.</small> </span>
+                                                                </a>
+                                                            </ul>
+                                                        </section>
+                                                    </div>-->
+                                                    <div class="col-md-2">
+                                                        <section class="panel b-a" style=" width:250px; height: 650px;">
+                                                            <div class="panel-heading b-b"><span class="badge bg-info pull-right">9</span> <a href="#" class="font-bold">online</a></div>
+                                                            <ul class="list-group list-group-lg no-bg auto">
+                                                                <a href="#" class="list-group-item clearfix">
+                                                                    <span class="pull-left thumb-sm avatar m-r"> <img src="{% static 'images/a3.png' %}" alt="..." /> <i class="on b-white bottom"></i> Mr Smite </span>
+                                                                </a>
+                                                                <a href="#" class="list-group-item clearfix">
+                                                                    <span class="pull-left thumb-sm avatar m-r"> <img src="{% static 'images/a5.png' %}" alt="..." /> <i class="on b-white bottom"></i> Tarell Willik </span>
+                                                                    
+                                                                </a>
+                                                                <a href="#" class="list-group-item clearfix">
+                                                                    <span class="pull-left thumb-sm avatar m-r"> <img src="{% static 'images/a6.png' %}" alt="..." /> <i class="busy b-white bottom"></i> Jhon Kanedy </span>
+                                                                   
+                                                                </a>
+                                                                <a href="#" class="list-group-item clearfix">
+                                                                    <span class="pull-left thumb-sm avatar m-r"> <img src="{% static 'images/a7.png' %}" alt="..." /> <i class="away b-white bottom"></i> Mr Robot </span>  
+                                                                </a>
+                                                                <a href="#" class="list-group-item clearfix">
+                                                                    <span class="pull-left thumb-sm avatar m-r"> <img src="{% static 'images/a3.png' %}" alt="..." /> <i class="on b-white bottom"></i> Mr Smite </span>
+                                                                </a>
+                                                                <a href="#" class="list-group-item clearfix">
+                                                                    <span class="pull-left thumb-sm avatar m-r"> <img src="{% static 'images/a5.png' %}" alt="..." /> <i class="on b-white bottom"></i> Tarell Willik </span>
+                                                                    
+                                                                </a>
+                                                                <a href="#" class="list-group-item clearfix">
+                                                                    <span class="pull-left thumb-sm avatar m-r"> <img src="{% static 'images/a6.png' %}" alt="..." /> <i class="busy b-white bottom"></i> Jhon Kanedy </span>
+                                                                   
+                                                                </a>
+                                                                <a href="#" class="list-group-item clearfix">
+                                                                    <span class="pull-left thumb-sm avatar m-r"> <img src="{% static 'images/a7.png' %}" alt="..." /> <i class="away b-white bottom"></i> Mr Robot </span>  
+                                                                </a>
+                                                            </ul>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+    <!-- Bootstrap -->
+    <!-- App -->
+
+
+
+
+
+
+
+
+
+    
+    <script src="{% static 'js/app.v1.js' %}"></script>
+    <script src="{% static 'js/charts/easypiechart/jquery.easy-pie-chart.js' %}"></script>
+    <script src="{% static 'js/charts/sparkline/jquery.sparkline.min.js' %}"></script>
+    <script src="{% static 'js/charts/flot/jquery.flot.min.js' %}"></script>
+    <script src="{% static 'js/charts/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="{% static 'js/charts/flot/jquery.flot.spline.js' %}"></script>
+    <script src="{% static 'js/charts/flot/jquery.flot.pie.min.js' %}"></script>
+    <script src="{% static 'js/charts/flot/jquery.flot.resize.js' %}"></script>
+    <script src="{% static 'js/charts/flot/jquery.flot.grow.js' %}"></script>
+    <script src="{% static 'js/charts/flot/demo.js' %}"></script>
+    <script src="{% static 'js/calendar/bootstrap_calendar.js' %}"></script>
+    <script src="{% static 'js/calendar/demo.js' %}"></script>
+    <script src="{% static 'js/sortable/jquery.sortable.js' %}"></script>
+    <script src="{% static 'js/app.plugin.js' %}"></script>
+</body>
+
+</html>
+{% else %}
+    <h2 style="text-align: center;">You are Not Authorized User Right Now!!!</h2>
+{% endif %}

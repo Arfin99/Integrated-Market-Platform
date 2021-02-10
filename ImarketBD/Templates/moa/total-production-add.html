@@ -1,0 +1,258 @@
+{% load static %}
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en" class="app">
+
+<head>
+    <meta charset="utf-8" />
+    <title>iMarketBD | Web Application</title>
+    <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="{% static 'css/app.v1.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'document/App unminify.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'js/calendar/bootstrap_calendar.css' %}" type="text/css" />
+    <!--[if lt IE 9]> <script src="js/ie/html5shiv.js"></script> <script src="js/ie/respond.min.js"></script> <script src="js/ie/excanvas.js"></script> <![endif]-->
+</head>
+
+<body class="">
+    <section class="vbox">
+        <header class="bg-white header header-md navbar navbar-fixed-top-xs box-shadow">
+            <div class="navbar-header aside-md dk">
+                <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html"> <i class="fa fa-bars"></i> </a>
+                <a href="index-port.html" class="navbar-brand"> <img src="{% static 'images/imagelogo.png' %}" class="m-r-sm" alt="IMarketBD"> <span class="hidden-nav-xs"></span> </a>
+            </div>
+            <ul class="nav navbar-nav hidden-xs">
+                <li class="dropdown">
+                    <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive"><i class="fa fa-bars"></i></a>
+                    <section class="dropdown-menu aside-lg bg-white on animated fadeInLeft">
+                        <div class="row m-l-none m-r-none m-t m-b text-center">
+                        </div>
+                    </section>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left input-s-xl m-t m-l-n-xs hidden-xs" role="search">
+                <div class="form-group">
+                    <div class="input-group"> <span class="input-group-btn"> <button type="submit" class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-search"></i></button> </span>
+                    <input type="text" class="form-control input-sm no-border" placeholder="Search products..."> 
+                    </div>
+                </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="thumb-sm avatar pull-left"> <img src="{% static 'images/a3.png' %}" alt="..."> </span> {{user.username}} <b class="caret"></b> </a>
+                    <ul class="dropdown-menu animated fadeInRight">
+                        <li> <a href="profile.html">Profile</a> </li>
+                        <li> <span class="arrow top"></span> <a href="#">Settings</a> </li>
+                        <li> <a href="docs.html">Help</a> </li>
+                        <li class="divider"></li>
+                        <li> <a href="{% url 'logout' %}">Logout</a> </li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+        <section>
+            <section class="hbox stretch">
+                <!-- .aside -->
+                <aside class="bg-black aside-md hidden-print hidden-xs" id="nav">
+                    <section class="vbox">
+                        <section class="w-f scrollable">
+                            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2"> 
+                                <!-- nav -->
+                                <nav class="nav-primary hidden-xs">
+                                    <ul class="nav nav-main" data-ride="collapse">
+                                        <li class="">
+                                            <a href="{% url 'agriculture' %}" class="auto"> <i class="fa fa-laptop"> </i> <span class="font-bold">Dashboard</span> </a>
+                                        </li>
+                                        <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Section</div>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">   </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-file"> </i> <span class="font-bold">Today Production List</span> </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'producted-products' %}" class="auto"> <span class="pull-right text-muted">  </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-file"> </i> <span class="font-bold">Producted Products List</span> </a>
+                                        </li>
+                                        
+                                        <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Addition</div>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">   </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-file"> </i> <span class="font-bold">Create New Sheet</span> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">   </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-file"> </i> <span class="font-bold">All Sheet</span> </a>
+                                        </li>
+                                        <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Extra</div>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">  </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-cog"> </i> <span class="font-bold">Settings</span> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="auto"> <span class="pull-right text-muted">  </span> <b class="badge bg-danger pull-right"></b> <i class="fa fa-pencil"> </i> <span class="font-bold">Help</span> </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'logout' %}" class="auto"> <span class="pull-right text-muted">  </span> <b class="badge bg-danger pull-right"></b> <i class="i i-logout"> </i> <span class="font-bold">Logout</span> </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- / nav -->
+                            </div>
+                        </section>
+                        <footer class="footer hidden-xs no-padder text-center-nav-xs">
+                            <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs"> <i class="i i-circleleft text"></i> <i class="i i-circleright text-active"></i> </a>
+                        </footer>
+                    </section>
+                </aside>
+                <!-- /.aside -->
+                            <section id="content">
+                                <section class="hbox stretch">
+                                    <section>
+                                        <section class="vbox">
+                                            <section class="scrollable padder">
+                                                <section class="row m-b-md">
+                                                    <div class="col-sm-6">
+                                                        <h3 class="m-b-xs text-black">Dashboard</h3> <small>Welcome back, {{user.username}}</small> </div>
+                                                </section>
+                                                <div class="row dk m-b" style="padding-top: 10px;">
+                                                    <div class="col-md-12 dker">
+                                                        <section class="panel b-a">
+                                                            <div class="panel-body" style="padding-bottom: 20px">
+                                                                <div class= "main-section" style=" width:600px; height: auto; margin:5px auto 0px;">
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <form method="POST" action="" >
+                                                                                {% csrf_token %}
+                                                                                <h3>Add Inserted Production Product Information</h3>
+                                                                                <br>
+                                                                                <br>
+                                                                                <div class="form-group">
+                                                                                    <label for="">Product Name</label>
+                                                                                    <input name="product_name" type="text" class="form-control" placeholder="Input Product Name">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="">Production Quantity</label>
+                                                                                    <input name="product_quantity" type="text" class="form-control" placeholder="Input Product Quantity">
+                                                                                </div> 
+                                                                                <div class="form-group">
+                                                                                    <label for="">Production Cost($)</label>
+                                                                                    <input name="product_cost" type="text" class="form-control" placeholder="Input Product Production Cost">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="">Production Place</label>
+                                                                                    <input name="production_place" type="text" class="form-control" placeholder="Input Production Place">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="">Production Date</label>
+                                                                                    <input name="production_date" type="text" class="form-control" placeholder="Input Product Production Date">
+                                                                                </div>
+                                                                                
+                                                                                
+                                                                            
+                                                                
+                                                                                <br>
+                                                                                <button type="submit" class="btn btn-primary">Add</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+                            </section>
+            </section>
+        </section>
+    </section>
+                <!-- Bootstrap -->
+                <!-- App -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                
+                <script src="{% static 'js/app.v1.js' %}"></script>
+                <script src="{% static 'js/charts/easypiechart/jquery.easy-pie-chart.js' %}"></script>
+                <script src="{% static 'js/charts/sparkline/jquery.sparkline.min.js' %}"></script>
+                <script src="{% static 'js/charts/flot/jquery.flot.min.js' %}"></script>
+                <script src="{% static 'js/charts/flot/jquery.flot.tooltip.min.js"></script>
+                <script src="{% static 'js/charts/flot/jquery.flot.spline.js' %}"></script>
+                <script src="{% static 'js/charts/flot/jquery.flot.pie.min.js' %}"></script>
+                <script src="{% static 'js/charts/flot/jquery.flot.resize.js' %}"></script>
+                <script src="{% static 'js/charts/flot/jquery.flot.grow.js' %}"></script>
+                <script src="{% static 'js/charts/flot/demo.js' %}"></script>
+                <script src="{% static 'js/calendar/bootstrap_calendar.js' %}"></script>
+                <script src="{% static 'js/calendar/demo.js' %}"></script>
+                <script src="{% static 'js/sortable/jquery.sortable.js' %}"></script>
+                <script src="{% static 'js/app.plugin.js' %}"></script>
+            </body>
+            {% else %}
+                <h2 style="text-align: center;">You are Not Authorized User Right Now!!!</h2>
+            {% endif %}
+
+
+<section>
+    <div class="modal fade" id="dataModal" >
+        <div class="modal-dialog" >
+            <div class="modal-content" style="width:600px; height:600px;">
+                <div class="model-header">
+                    <button type="button" style="margin-right: 20px;" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="model-title" style="margin-left: 40px;">Product Details</h3>
+                </div>
+                <div class="modal-body" id="staff_detail">
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div id="update_data_Modal" class="modal fade">  
+        <div class="modal-dialog">  
+            <div class="modal-content">  
+                    <div class="modal-header">  
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                        <h4 class="modal-title">Update Staff Info</h4>  
+                    </div>  
+                    <div class="modal-body">  
+                        <form method="post" id="update_form">  
+                            <label>Name</label>  
+                            <input type="text" name="fname" id="first_name" class="form-control" />  
+                            <br />  
+                            <label>Catagory</label>  
+                            <input type="text" name="lname" id="last_name" class="form-control" />   
+                            <br/>
+                            <label>Code</label>  
+                            <input type="text" name="email" id="email" class="form-control" />  
+                            <br />  
+                            <label>Production palce</label>  
+                            <input type="text" name="contact" id="contact" class="form-control" />  
+                            <br />  
+                            <input type="hidden" name="staff_id" id="staff_id" />  
+                            <input type="submit" name="submit" id="update" value="Update" class="btn btn-success" />  
+                        </form>  
+                    </div>  
+                    <div class="modal-footer">  
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                    </div>  
+            </div>  
+        </div>  
+    </div>
+</section>
+<script>
+    $(document).ready(function(){   
+    $(document).on('click', '.view_data', function(){  
+        $('#dataModal').modal('show');          
+    });
+});
+$(document).ready(function(){   
+    $(document).on('click', '.edit_data', function(){  
+        $('#update_data_Modal').modal('show');          
+    });
+});
+</script>
+
+</html>

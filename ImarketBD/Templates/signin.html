@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class=" ">
+    <head> 
+        <meta charset="utf-8" /> 
+        <title>iMarketBD | Web Application</title> 
+        <meta name="description" content="signin" /> 
+        <meta name="viewport" content="width=device-width" /> 
+        <link rel="stylesheet" href="{% static 'css/app.v1.css' %}" type="text/css" /> 
+    </head>
+<body> 
+    <section id="content" class="m-t-lg wrapper-md animated fadeInUp"> 
+        <div class="container aside-xl" style=" background-color: rgb(255, 255, 255); padding:50px;  margin-top:150px"> 
+            <section class="m-b-lg"> 
+                <header class="wrapper text-center"> 
+                    <img style="width:200px; text-align: center;"src="{% static 'images/imagelogo.PNG' %}" alt="iMarketBD">
+                    <strong></strong> 
+                </header> 
+                <form action="" method="POST">
+                    {% csrf_token %}  
+                    <div class="list-group"> 
+                        <div class="list-group-item"> 
+                            <input name="email" type="text" placeholder="Enter the email" class="form-control no-border"> 
+                        </div> 
+                        <br>
+                        <div class="list-group-item"> 
+                            <input name="password" type="password" placeholder="Enter the password" class="form-control no-border"> 
+                        </div> 
+                    </div>
+                    {%  for field in login_form %}
+                        <p>
+                            {% for error in field.errors %}
+                                <p>{{error}}</p>
+                            {% endfor %}
+
+                            {% if login_form.non_field_errors %}
+                                <p style="color: red;">{{ login_form.non_field_errors }}</p>
+                            {% endif %}
+                        </p>
+                    {% endfor %}
+
+
+
+                    <button type="submit" class="btn btn-lg btn-block" style="background-color: #32a852; color: azure">Sign in</button> 
+                    <div class="line line-dashed">
+                    </div> 
+                    <p class="text-muted text-center"><small>Do not have an account?</small></p> 
+                    <a href="{% url 'apply' %}" class="btn btn-lg btn-block" style="background-color: #060af3; color: azure">Create an account</a> 
+                    <br>
+                    <a href="#"><small>Forgot password?</small></a>
+                </form> 
+            </section> 
+        </div> 
+    </section> 
+    <!-- footer --> 
+    <footer id="footer"> 
+        <div class="text-center m-t m-b">
+        </div> 
+    </footer> 
+    <!-- / footer --> <!-- Bootstrap --> <!-- App --> 
+    <script src="js/app.v1.js"></script> 
+    <script src="js/app.plugin.js"></script>
+</body>
+<!-- Mirrored from flatfull.com/themes/scale/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Jul 2019 15:15:07 GMT -->
+</html>
